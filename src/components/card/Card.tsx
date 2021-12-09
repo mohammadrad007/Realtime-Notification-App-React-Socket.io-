@@ -21,12 +21,14 @@ const Card: React.FC<CardType> = ({ posts }: CardType) => {
             <img src={userImg} alt={username} className={classes.userImage} />
             <span>{fullname}</span>
           </div>
-          <img src={postImg} alt="" />
+          <img src={postImg} alt="" className={classes.postImage} />
           <div className={classes.interaction}>
-            <IoHeart />
-            <IoChatbubbleOutline />
-            <IoRepeatOutline />
-            <IoInformationCircle />
+            <div>
+              <IoHeart fontSize={20} className={classes.cardIcon} />
+              <IoChatbubbleOutline fontSize={20} className={classes.cardIcon} />
+              <IoRepeatOutline fontSize={20} className={classes.cardIcon} />
+            </div>
+            <IoInformationCircle fontSize={18} className={classes.cardIcon} />
           </div>
         </div>
       ))}
