@@ -10,9 +10,10 @@ import classes from "./card.module.css";
 
 interface CardType {
   post: any;
+  socket: any;
 }
 
-const Card: React.FC<CardType> = ({ post }: CardType) => {
+const Card: React.FC<CardType> = ({ post, socket }: CardType) => {
   const { userImg, username, fullname, postImg } = post;
   const [liked, setLiked] = useState<Boolean>(false);
 
