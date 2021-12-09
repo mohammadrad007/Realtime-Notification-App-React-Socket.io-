@@ -14,7 +14,9 @@ const App = () => {
       {user ? (
         <>
           <Navbar />
-          <Card posts={posts} />
+          {posts.map((post) => (
+            <Card key={post.id} post={post} />
+          ))}
         </>
       ) : (
         <div className={classes.login}>
