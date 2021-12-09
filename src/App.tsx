@@ -15,16 +15,17 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    socket.emmit("newUser", user);
+    console.log("SOCKET ON");
+    socket?.emit("newUser", user);
   }, [socket, user]);
 
   return (
     <div className={classes.container}>
       {user ? (
         <>
-          <Navbar socket={socket} />
+          <Navbar socket={socket} user={user} />
           {posts.map((post) => (
-            <Card key={post.id} post={post} socket={socket} />
+            <Card key={post.id} post={post} socket={socket} user={user} />
           ))}
         </>
       ) : (

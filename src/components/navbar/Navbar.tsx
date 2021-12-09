@@ -1,14 +1,27 @@
+import { useEffect, useState } from "react";
 import { IoNotificationsSharp, IoChatbox, IoSettings } from "react-icons/io5";
 import classes from "./navbar.module.css";
 
 interface NavbarType {
   socket: any;
+  user: string;
 }
 
-const Navbar: React.FC<NavbarType> = (socket: NavbarType) => {
+const Navbar: React.FC<NavbarType> = ({ socket, user }: NavbarType) => {
+  const [notifications, setNotifications] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    socket.on("getNotification", (data: any) => {
+      setNotifications((prev) => [...prev, data]);
+    });
+  }, [socket]);
+
+  console.log(notifications);
+
   return (
     <div className={classes.navbar}>
       <span className={classes.logo}>Lama App</span>
+      <p>Hi {user}</p>
       <div className={classes.icons}>
         <div className={classes.icon}>
           <IoNotificationsSharp fontSize={25} />
